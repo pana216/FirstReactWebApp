@@ -33,7 +33,17 @@
                 /*Make the copy unfunctionable*/
                 navigator.clipboard.writeText("You better don't copy");
             }
-
+            /*Event handler function for textinput changes*/
+            handleChange = (e) => {
+                this.setState({
+                    name: e.target.value
+                });
+            }
+            /*Event handler function when form is submited*/
+            handleSubmit = (e) => {
+                e.preventDefault();
+                console.log('form submitted', this.state.name);
+            }
             render() {
                 return (
                     <div className="app-content">
@@ -43,6 +53,10 @@
                         <button onClick={this.handleClick}>Click Me!</button>
                         <button onMouseOver={this.handleMouseOver}>Hover Me!</button>
                         <p onCopy={this.handleCopy}>What we think we become</p>
+                        <form onSubmit={this.handleSubmit}>
+                            <input type="text" onChange={this.handleChange}/>
+                            <button>Submit</button>
+                        </form>
                     </div>
                 )
             }
