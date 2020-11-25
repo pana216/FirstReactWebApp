@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const Ninjas = ({ninjas}) => { /* destructuring assignment */
+const Ninjas = ({ninjas, deleteNinja}) => { /* destructuring assignment */
     //const ninjaList = ninjas.map(ninja => {
     //     if (ninja.age > 23){
     //         return (
@@ -15,12 +15,17 @@ const Ninjas = ({ninjas}) => { /* destructuring assignment */
     //         return null;
     //     }
     // })        
+    
     const ninjaList = ninjas.map(ninja => {
         return ninja.age > 23 ? (
             <div className="ninja" key = {ninja.id}>
                    <div> Name: { ninja.name } </div>
                    <div> Age: { ninja.age }</div>
                    <div> Belt: { ninja.belt }</div>
+                   {/* onClick would be fired instantly if we refresh vistit the page
+                   there for we write () => in front of it to call it as an anonymous function
+                   to fire only when we click the button  */}
+                   <button onClick={() => deleteNinja(ninja.id)}>Delete Ninja</button>  
                  </div>
         ) : null;    
     });
